@@ -12,17 +12,8 @@ public class Main {
         dog.name = "Doggie";
         me.pet = dog;
 
-        System.out.println("Hi, I'm " + dog.name);
-        System.out.println("My species is " + dog.species);
-
-        dog.feed();
-        me.pet.feed();
-        System.out.println(me.pet.species);
-
-        me.pet = new Animal("Dragon");
-        me.pet.name = "Mysz";
-
-
-        System.out.println(me.pet.species);
+        Car car = new Car("6", "Mazda", 2005);
+        me.car = car;
+        System.out.println("Mój samochód to: "+ me.car.producer + me.car.model + " rok: "+ me.car.yearOfTheProduction);
     }
 }
