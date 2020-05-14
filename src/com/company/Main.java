@@ -14,6 +14,9 @@ public class Main {
 
         Car car = new Car("6", "Mazda", 2005);
         me.car = car;
-        System.out.println("Mój samochód to: "+ me.car.producer + me.car.model + " rok: "+ me.car.yearOfTheProduction);
+        System.out.println("Mój samochód to: "+ me.car.producer + " " + me.car.model + " rok: "+ me.car.yearOfTheProduction);
+
+        me.setSalary(2500.0);
+        me.getSalary();
     }
 }
