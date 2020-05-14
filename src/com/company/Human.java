@@ -8,7 +8,7 @@ public class Human {
     String firstName;
     String lastName;
 
-    private Double salary;
+    private Double salary = DEFAULT_SALARY_VALUE;
     private static Double DEFAULT_SALARY_VALUE = 1700.0;
 
     Animal pet;
