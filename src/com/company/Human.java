@@ -9,12 +9,12 @@ public class Human {
     String lastName;
 
     private Double salary = DEFAULT_SALARY_VALUE;
-    private static Double DEFAULT_SALARY_VALUE = 1700.0;
+    private static final Double DEFAULT_SALARY_VALUE = 1700.0;
 
     Animal pet;
 
     Phone phone;
-    Car car;
+    private Car car;
 
     public Double getSalary()
     {
@@ -40,6 +40,28 @@ public class Human {
         this.salary = value;
 
         return true;
+    }
+
+    public Car getCar() {
+        return this.car;
+    }
+
+    public boolean setCar(Car car) {
+        if (this.salary > car.getValue()) {
+            this.car = car;
+            System.out.println("Kupiłeś samochód za gotówkę: " + car.producer + " " + car.model);
+            System.out.println("Przypisano do właściela: " + this.firstName + " " + this.lastName);
+            return true;
+        } else if (this.salary > car.getValue() / 12.0) {
+            this.car = car;
+            System.out.println("Kupiłeś samochód: " + car.producer + " " + car.model);
+            System.out.println("Niestety na raty, które wynoszą: " + car.getValue() / 12.0);
+            System.out.println("Przypisano do właściela: " + this.firstName + " " + this.lastName);
+            return true;
+        } else {
+            System.out.println("Niestety samochód: " + car.producer + " " + car.model + "jest za drogi");
+            return false;
+        }
     }
 
 }
