@@ -1,5 +1,8 @@
 package com.company;
 
+import com.company.devices.Car;
+import com.company.devices.Phone;
+
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -16,8 +19,11 @@ public class Human {
     Phone phone;
     private Car car;
 
-    public Double getSalary()
-    {
+    public String toString() {
+        return this.firstName + " " + this.lastName;
+    }
+
+    public Double getSalary() {
         DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
         Date date = new Date();
         System.out.println("Data: " + dateFormat.format(date) + ", wartość wypłaty: " + this.salary);
@@ -43,23 +49,24 @@ public class Human {
     }
 
     public Car getCar() {
+        System.out.println(this.toString() + " posiada samochód: " + this.car.toString());
         return this.car;
     }
 
     public boolean setCar(Car car) {
         if (this.salary > car.getValue()) {
             this.car = car;
-            System.out.println("Kupiłeś samochód za gotówkę: " + car.producer + " " + car.model);
-            System.out.println("Przypisano do właściela: " + this.firstName + " " + this.lastName);
+            System.out.println("Kupiłeś samochód za gotówkę: " + this.car.toString());
+            System.out.println("Przypisano do właściela: " + this.toString());
             return true;
         } else if (this.salary > car.getValue() / 12.0) {
             this.car = car;
-            System.out.println("Kupiłeś samochód: " + car.producer + " " + car.model);
+            System.out.println("Kupiłeś samochód: " + this.car.toString());
             System.out.println("Niestety na raty, które wynoszą: " + car.getValue() / 12.0);
-            System.out.println("Przypisano do właściela: " + this.firstName + " " + this.lastName);
+            System.out.println("Przypisano do właściela: " + this.toString());
             return true;
         } else {
-            System.out.println("Niestety samochód: " + car.producer + " " + car.model + "jest za drogi");
+            System.out.println("Niestety samochód: " + this.car.toString() + "jest za drogi");
             return false;
         }
     }

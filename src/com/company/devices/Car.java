@@ -1,4 +1,4 @@
-package com.company;
+package com.company.devices;
 
 import java.io.File;
 
@@ -21,5 +21,9 @@ public class Car {
 
     public Double getValue() {
         return this.value;
+    }
+
+    public String toString() {
+        return this.producer + " " + this.model + " " + this.yearOfTheProduction;
     }
 }
