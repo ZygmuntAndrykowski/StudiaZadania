@@ -2,11 +2,7 @@ package com.company.devices;
 
 import java.io.File;
 
-public class Car {
-
-    final String model;
-    final String producer;
-    final Integer yearOfTheProduction;
+public class Car extends Device {
     private static final Double DEFAULT_VALUE_CARVALUE = 3000.0;
     String color;
     File pic;
@@ -25,5 +21,10 @@ public class Car {
 
     public String toString() {
         return this.producer + " " + this.model + " " + this.yearOfTheProduction;
+    }
+
+    @Override
+    public void turnOn() {
+        System.out.println("Przekręcenie kluczyka powoduje odpalenie silnika...");
     }
 }

@@ -19,11 +19,13 @@ public class Main {
         Car renault = new Car("Scenic", "Renault", 1998);
 
 
+
         me.setSalary(2500.0);
         me.getSalary();
 
         me.setCar(mazda);
         me.getCar();
+        mazda.turnOn();
 
     }
 }
