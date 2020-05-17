@@ -1,5 +1,7 @@
 package com.company.devices;
 
+import com.company.Human;
+
 import java.io.File;
 
 public class Car extends Device {
@@ -26,5 +28,24 @@ public class Car extends Device {
     @Override
     public void turnOn() {
         System.out.println("Przekręcenie kluczyka powoduje odpalenie silnika...");
+    }
+
+    @Override
+    public void sell(Human seller, Human buyer, Double price) {
+        if (seller.getCar() == null) {
+            System.out.println("[error] Nie posiada samochodu, który mógłby sprzedać.");
+            return;
+        } else if (buyer.cash < price) {
+            System.out.println("[error] Masz za mało pieniędzy.");
+            return;
+        }
+
+        buyer.cash -= price;
+        seller.cash += price;
+
+        buyer.setCar(seller.getCar());
+        seller.setCar(null);
+
+        System.out.println("[succes] Udany zakup samochodu: " + buyer.getCar());
     }
 }

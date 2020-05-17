@@ -2,14 +2,14 @@ package com.company;
 
 import java.io.File;
 
-public class Animal {
+public class Animal implements salleable {
     final String species;
     String name;
     File pic = null;
     private Double weight;
     static final Double DEFAULT_DOG_WEIGHT = 10.0;
     static final Double DEFAULT_DRAGON_WEIGHT = 1000.0;
-    static final Double DEFAULT_OTHER_WEIGHT = 1.0;
+    static final Double DEFAULT_OTHER_WEIGHT = 65.0;
 
     public String toString() {
         return this.species + " " + this.name + " " + this.weight;
@@ -21,9 +21,8 @@ public class Animal {
         else if (species.equals("Dragon")) {
             weight = DEFAULT_DRAGON_WEIGHT;
         } else weight = DEFAULT_OTHER_WEIGHT;
-
-
     }
+
     void feed() {
         this.weight++;
         System.out.println("Thx, I be so hungry, my weight is now " + this.weight);
@@ -45,5 +44,27 @@ public class Animal {
             this.weight -= 0.5;
             System.out.println("Thx, I be so happy to walk with you, my weight is now " + this.weight);
         }
+    }
+
+    @Override
+    public void sell(Human seller, Human buyer, Double price) {
+        if (seller.getAnimal() == null) {
+            System.out.println("[error] Nie posiada samochodu, który mógłby sprzedać.");
+            return;
+        } else if (buyer.cash < price) {
+            System.out.println("[error] Masz za mało pieniędzy.");
+            return;
+        } else if (seller.pet.species == "Homo Sapiens") {
+            System.out.println("Ty chory... człowieku, nie wolno sprzedawać innych ludzi.");
+            return;
+        }
+
+        buyer.cash -= price;
+        seller.cash += price;
+
+        buyer.setAnimal(seller.getAnimal());
+        seller.setAnimal(null);
+
+        System.out.println("[succes] Udany zakup zwierzęcia: " + buyer.getAnimal() + " opiekuj się nim.");
     }
 }

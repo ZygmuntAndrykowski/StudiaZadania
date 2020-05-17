@@ -7,17 +7,22 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-public class Human {
+public class Human extends Animal {
     String firstName;
     String lastName;
 
     private Double salary = DEFAULT_SALARY_VALUE;
     private static final Double DEFAULT_SALARY_VALUE = 1700.0;
+    public Double cash = 0.0;
 
     Animal pet;
 
     Phone phone;
-    private Car car;
+    private Car car = null;
+
+    public Human(String species) {
+        super(species);
+    }
 
     public String toString() {
         return this.firstName + " " + this.lastName;
@@ -48,12 +53,40 @@ public class Human {
         return true;
     }
 
+    public Double getCash() {
+        return this.cash;
+    }
+
     public Car getCar() {
-        System.out.println(this.toString() + " posiada samochód: " + this.car.toString());
+        /* System.out.println(this.toString() + " posiada samochód: " + this.car.toString()); */
         return this.car;
     }
 
-    public boolean setCar(Car car) {
+    public Car setCar(Car car) {
+        this.car = car;
+        return car;
+    }
+
+    public Phone getPhone() {
+        return this.phone;
+    }
+
+    public Phone setPhone(Phone phone) {
+        this.phone = phone;
+        return phone;
+    }
+
+    public Animal getAnimal() {
+        return this.pet;
+    }
+
+    public Animal setAnimal(Animal pet) {
+        this.pet = pet;
+        return pet;
+    }
+
+
+    public boolean buyCarFromSalon(Car car) {
         if (this.salary > car.getValue()) {
             this.car = car;
             System.out.println("Kupiłeś samochód za gotówkę: " + this.car.toString());
@@ -69,6 +102,8 @@ public class Human {
             System.out.println("Niestety samochód: " + this.car.toString() + "jest za drogi");
             return false;
         }
+
     }
+
 
 }
