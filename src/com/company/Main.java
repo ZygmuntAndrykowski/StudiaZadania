@@ -47,5 +47,7 @@ public class Main {
         Samsung.sell(me, meClone, 500.0);
         System.out.println(meClone.toString() + " posiada telefon: " + meClone.getPhone());
 
+        Samsung.installAnnApp("Twiter, Facebook, Instagram");
+
     }
 }

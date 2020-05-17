@@ -3,6 +3,12 @@ package com.company.devices;
 import com.company.creatures.Human;
 
 public class Phone extends Device {
+    static final String DEFAULT_APP_VERSION = "LATEST";
+    static final String DEFAULT_APP_ADRESS = "voidapp.com/";
+    static final String DEFAULT_PROTOCOL = "https";
+    String appName;
+    String appVersion;
+    String appAddress;
 
     Double screenSize;
 
@@ -38,5 +44,21 @@ public class Phone extends Device {
         seller.setPhone(null);
 
         System.out.println("[succes] Udany zakup telefonu: " + buyer.getPhone());
+    }
+
+    public void installAnnApp(String appName) {
+        System.out.println("Instaluje aplikacje " + this.appName);
+    }
+
+    public void installAnnApp(String appName, String appVersion) {
+        System.out.println("Instaluje aplikacje " + this.appVersion + "Ver: " + this.appVersion);
+    }
+
+    public void installAnnApp(String appName, String appVersion, String appAddress) {
+        System.out.println("Pobieranie aplikacji z adresu: " + this.appAddress);
+        System.out.println("Instaluje aplikacje " + this.appVersion + "Ver: " + this.appVersion);
+    }
+
+    public void installAnnApp(String[] appNames) {
     }
 }
