@@ -1,5 +1,7 @@
 package com.company;
 
+import com.company.creatures.Human;
+import com.company.creatures.Pet;
 import com.company.devices.Car;
 import com.company.devices.Phone;
 
@@ -19,10 +21,11 @@ public class Main {
         human.firstName = "Andrzej";
         human.lastName = "Zwierzynski";
 
-        Animal dog = new Animal("Dog");
+        Pet dog = new Pet("Dog");
         dog.name = "Doggie";
-        me.pet = meClone;
+        me.pet = dog;
 
+        dog.feed(10.0);
 
         Car mazda = new Car("6", "Mazda", 2005);
         Car renault = new Car("Scenic", "Renault", 1998);
@@ -36,17 +39,13 @@ public class Main {
 
         System.out.println(me.getCash());
 
-        meClone.setCar(mazda);
-        meClone.getCar();
+        me.buyCarFromSalon(mazda);
         me.setPhone(Samsung);
 
         mazda.sell(meClone, me, 1000.0);
         System.out.println(me.toString() + " posiada samochód: " + me.getCar());
         Samsung.sell(me, meClone, 500.0);
-        System.out.println(meClone.toString() + " posiada telefon: " + meClone.phone.toString());
-
-        meClone.sell(me, human, 1500.0);
-        System.out.println(human.toString() + " posiada zwierze: " + human.getAnimal());
+        System.out.println(meClone.toString() + " posiada telefon: " + meClone.getPhone());
 
     }
 }

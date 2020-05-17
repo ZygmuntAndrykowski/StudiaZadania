@@ -1,15 +1,18 @@
-package com.company;
+package com.company.creatures;
+
+import com.company.salleable;
 
 import java.io.File;
 
-public class Animal implements salleable {
+public abstract class Animal implements salleable, Feedable {
     final String species;
-    String name;
+    private final Double foodWeight = 0.0;
     File pic = null;
-    private Double weight;
+    public String name;
     static final Double DEFAULT_DOG_WEIGHT = 10.0;
     static final Double DEFAULT_DRAGON_WEIGHT = 1000.0;
     static final Double DEFAULT_OTHER_WEIGHT = 65.0;
+    Double weight;
 
     public String toString() {
         return this.species + " " + this.name + " " + this.weight;
@@ -23,26 +26,25 @@ public class Animal implements salleable {
         } else weight = DEFAULT_OTHER_WEIGHT;
     }
 
-    void feed() {
-        this.weight++;
-        System.out.println("Thx, I be so hungry, my weight is now " + this.weight);
-        if (this.weight <= 0.0) System.out.println("Your Pet is dead. You don't need feed him anymore");
+    public void feed() {
+        if (this.weight <= 0.0) System.out.println("Twoje zwierze jest martwe, nie musisz go już karmić. ");
         else if (this.weight <= 100.0) {
             this.weight += 1.0;
-            System.out.println("Thx, I be so hungry, my weight is now " + this.weight);
+            System.out.println("Dziękuje, Byłem tak bardzo głodny, moja waga teraz: " + this.weight);
         }
     }
 
     void takeForAWalk() {
 
-        if (this.weight <= 0.0) System.out.println("Your Pet is dead. You don't need walk with him anymore");
+        if (this.weight <= 0.0)
+            System.out.println("Twój zwierze jest martw. Nie musisz z nim wychodzić na spacer więcej.");
         else if (this.weight >= 100.0) {
-            System.out.println("Your Pet is too big. He Can't walk becouse his weight ");
+            System.out.println("Twoje zwierze jest zbyt grubę. Przez wagę nie może się ruszyć.");
         } else if (this.weight <= 1.0) {
-            System.out.println("I'm so hungry, feed me first ");
+            System.out.println("Jestem bardzo głodny, nakarm mnie pierw.");
         } else {
             this.weight -= 0.5;
-            System.out.println("Thx, I be so happy to walk with you, my weight is now " + this.weight);
+            System.out.println("Dziękuje, Cieszę się że mogliśmy wyjsć razem na spacer. Moja waga teraz wynosi: " + this.weight);
         }
     }
 
@@ -67,4 +69,5 @@ public class Animal implements salleable {
 
         System.out.println("[succes] Udany zakup zwierzęcia: " + buyer.getAnimal() + " opiekuj się nim.");
     }
+
 }
