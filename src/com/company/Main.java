@@ -52,7 +52,6 @@ public class Main {
         Arrays.sort(me.garage, Comparator.nullsLast(Comparator.comparing(Car::getYear)));
         System.out.println(Arrays.toString(me.getGarage()));
         me.setPhone(Samsung);
-        renault.sellCar(meClone, 1, me, 3000.0);
 
         Samsung.sell(me, meClone, 500.0);
         System.out.println(meClone.toString() + " posiada telefon: " + meClone.getPhone());
