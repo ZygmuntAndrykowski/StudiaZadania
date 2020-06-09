@@ -17,4 +17,5 @@ public abstract class Device implements salleable {
     public Double getPrice() {
         return price;
     }
+
 }

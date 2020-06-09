@@ -3,21 +3,27 @@ package com.company;
 import com.company.creatures.Human;
 import com.company.creatures.Pet;
 import com.company.devices.Car;
+import com.company.devices.DieselCar;
+import com.company.devices.LPGCar;
 import com.company.devices.Phone;
+
+import java.util.Arrays;
+import java.util.Comparator;
+
 
 public class Main {
 
     public static void main(String[] args) {
 
-        Human me = new Human("Homo Sapiens");
+        Human me = new Human("Homo Sapiens", 5);
         me.firstName = "Zygmunt";
         me.lastName = "Andrykowski";
 
-        Human meClone = new Human("Homo Sapiens");
+        Human meClone = new Human("Homo Sapiens", 3);
         meClone.firstName = "Zygmunt_klon";
         meClone.lastName = "Andrykowski_klon";
 
-        Human human = new Human("Homo Sapiens");
+        Human human = new Human("Homo Sapiens", 2);
         human.firstName = "Andrzej";
         human.lastName = "Zwierzynski";
 
@@ -27,23 +33,27 @@ public class Main {
 
         dog.feed(10.0);
 
-        Car mazda = new Car("6", "Mazda", 2005);
-        Car renault = new Car("Scenic", "Renault", 1998);
+        DieselCar mazda = new DieselCar("6", "Mazda", 2005, 3000.0);
+        LPGCar renault = new LPGCar("Scenic", "Renault", 1998, 3000.0);
 
         Phone Samsung = new Phone("Avilla", "Samsung", 2003, 4.0);
 
-        me.setSalary(2500.0);
+        me.setSalary(5000.0);
         me.getSalary();
-        me.cash = 3000.0;
-        human.cash = 5000.0;
+        meClone.setCar(renault, 1);
 
         System.out.println(me.getCash());
 
-        me.buyCarFromSalon(mazda);
-        me.setPhone(Samsung);
+        me.setCar(mazda, 0);
+        me.setCar(renault, 1);
+        me.setCar(mazda, 4);
 
-        mazda.sell(meClone, me, 1000.0);
-        System.out.println(me.toString() + " posiada samochód: " + me.getCar());
+        //sortowanie samochodów w garażu ze wzgledu na wiek (od najstarszego do najnowszego, + puste miejsca)
+        Arrays.sort(me.garage, Comparator.nullsLast(Comparator.comparing(Car::getYear)));
+        System.out.println(Arrays.toString(me.getGarage()));
+        me.setPhone(Samsung);
+        renault.sellCar(meClone, 1, me, 3000.0);
+
         Samsung.sell(me, meClone, 500.0);
         System.out.println(meClone.toString() + " posiada telefon: " + meClone.getPhone());
 
