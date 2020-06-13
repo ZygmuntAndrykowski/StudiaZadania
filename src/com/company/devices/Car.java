@@ -11,7 +11,7 @@ public abstract class Car extends Device {
     String color;
     File pic;
     public Double value = DEFAULT_VALUE_CARVALUE;
-
+    public Human[] sellerList;
 
     public Car(String model, String producer, Integer yearOfTheProduction, Double value) {
         this.model = model;
@@ -55,7 +55,7 @@ public abstract class Car extends Device {
 
         buyer.setCar(seller.getCar(selectSellerPlace), buyer.freeGaragePlace());
         seller.setCar(null, selectSellerPlace);
-
+        //sellerList(seller.toString());
         System.out.println("[succes] Udany zakup samochodu: " + buyer.freeGaragePlace());
     }
 }

@@ -75,7 +75,7 @@ public class Human extends Animal {
 
     public int freeGaragePlace() {
 
-        for (int i = 0; i == this.garage.length; i++) {
+        for (int i = 0; i != this.garage.length; i++) {
             if (this.garage[i] == null) {
                 return i;
             }
