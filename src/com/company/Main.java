@@ -40,18 +40,29 @@ public class Main {
 
         me.setSalary(5000.0);
         me.getSalary();
-        meClone.setCar(renault, 1);
 
         System.out.println(me.getCash());
 
-        me.setCar(mazda, 0);
-        me.setCar(renault, 1);
-        me.setCar(mazda, 4);
+        me.setCar(mazda, me.freeGaragePlace());
+        me.setCar(renault, me.freeGaragePlace());
 
         //sortowanie samochodów w garażu ze wzgledu na wiek (od najstarszego do najnowszego, + puste miejsca)
         Arrays.sort(me.garage, Comparator.nullsLast(Comparator.comparing(Car::getYear)));
         System.out.println(Arrays.toString(me.getGarage()));
         me.setPhone(Samsung);
+
+        System.out.println("//////////////////////////////////////////////////////////////////////////////////////");
+        mazda.sellCar(me, 1, meClone, 100.0);
+        System.out.println(Arrays.toString(meClone.getGarage()));
+        System.out.println(Arrays.toString(mazda.getSellerList()));
+        mazda.sellCar(meClone, 0, me, 100.0);
+        System.out.println(Arrays.toString(me.getGarage()));
+        System.out.println(Arrays.toString(mazda.getSellerList()));
+        //Sprawdź czy...
+        System.out.println("[Zapytanie] Czy " + me.toString() + " posiadał samochód " + mazda.toString() + ": " + mazda.searchForSellerList(me));
+        System.out.println("[Zapytanie] Czy " + me.toString() + " sprzedał samochód " + mazda.toString() + " " + meClone.toString() + ": " + mazda.checkForSellerList(me, meClone));
+        System.out.println("[Zapytanie] Czy " + meClone.toString() + " sprzedał samochód " + mazda.toString() + " " + me.toString() + ": " + mazda.checkForSellerList(meClone, me));
+        System.out.println("Samochód " + mazda.toString() + " brał udział w " + mazda.getNumberOfSell() + " transakcjach. ");
 
         Samsung.sell(me, meClone, 500.0);
         System.out.println(meClone.toString() + " posiada telefon: " + meClone.getPhone());

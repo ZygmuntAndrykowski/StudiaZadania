@@ -17,7 +17,6 @@ public class Human extends Animal {
     public Car[] garage;
     private Double salary = DEFAULT_SALARY_VALUE;
 
-    //private Car[] garage = new Car[DEFAULT_GARAGE_LIMIT];
     private Phone phone = null;
 
 
