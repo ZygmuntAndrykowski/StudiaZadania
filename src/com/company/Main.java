@@ -64,10 +64,22 @@ public class Main {
         System.out.println("[Zapytanie] Czy " + meClone.toString() + " sprzedał samochód " + mazda.toString() + " " + me.toString() + ": " + mazda.checkForSellerList(meClone, me));
         System.out.println("Samochód " + mazda.toString() + " brał udział w " + mazda.getNumberOfSell() + " transakcjach. ");
 
-        Samsung.sell(me, meClone, 500.0);
-        System.out.println(meClone.toString() + " posiada telefon: " + meClone.getPhone());
 
-        Samsung.installAnnApp("Twiter, Facebook, Instagram");
+        Application facebook = new Application("Facebook", "1.2", 0.0);
+        Application facebook2 = new Application("Facebook", "1.4", 0.0);
+        Application superGiantGame = new Application("Super Game", "1.0", 3.20);
+        Application smileApp = new Application("Smile App", "3.0", 1.0);
 
+
+        System.out.println("Pieniądze wynoszą " + me.cash);
+        Samsung.installAnnApp(me, facebook);
+        Samsung.installAnnApp(me, facebook);
+
+        Samsung.installAnnApp(me, smileApp);
+
+        System.out.println("Wartość aplikacji na telefonie wynosi: " + Samsung.valuePhoneApps() + " zł.");
+
+        System.out.println("Aplikacja: " + superGiantGame.toString() + "jest zainstalowana? " + Samsung.searchForAppsObject(superGiantGame));
+        System.out.println("Aplikacja: " + facebook2.toString() + "jest zainstalowana? " + Samsung.searchForAppsName(facebook));
     }
 }

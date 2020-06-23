@@ -12,7 +12,7 @@ public abstract class Car extends Device {
 
     String color;
     File pic;
-    public Double value = DEFAULT_VALUE_CARVALUE;
+    public Double value;
     private Integer numberOfSell;
     public Human[] sellerList;
 
@@ -20,7 +20,7 @@ public abstract class Car extends Device {
         this.model = model;
         this.producer = producer;
         this.yearOfTheProduction = yearOfTheProduction;
-        this.value = value;
+        this.value = DEFAULT_VALUE_CARVALUE;
         this.sellerList = new Human[DEFAULT_VALUE_MAX_NUMBER_OF_SELLER];
         this.numberOfSell = 0;
     }

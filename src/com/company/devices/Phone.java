@@ -1,16 +1,16 @@
 package com.company.devices;
 
+import com.company.Application;
 import com.company.creatures.Human;
 
-public class Phone extends Device {
-    static final String DEFAULT_APP_VERSION = "LATEST";
-    static final String DEFAULT_APP_ADRESS = "voidapp.com/";
-    static final String DEFAULT_PROTOCOL = "https";
-    String appName;
-    String appVersion;
-    String appAddress;
+import java.util.HashSet;
+import java.util.Set;
 
+public class Phone extends Device {
     Double screenSize;
+
+    //Lista zainstalowanych aplikacji na telefonie
+    Set<Application> phoneApps = new HashSet<>();
 
     public Phone(String model, String producer, Integer yearOfTheProduction, Double screenSize) {
         this.model = model;
@@ -46,7 +46,47 @@ public class Phone extends Device {
         System.out.println("[succes] Udany zakup telefonu: " + buyer.getPhone());
     }
 
-    public void installAnnApp(String appName) {
+    public boolean searchForAppsName(Application app) {
+
+        return this.phoneApps.contains(app.appName);
+    }
+
+    public boolean searchForAppsObject(Application appName) {
+
+        return this.phoneApps.contains(appName);
+    }
+
+    public Double valuePhoneApps() {
+        Double sumAppsOnPhone = 0.0;
+        for (Application apps : phoneApps) {
+            if (apps != null) sumAppsOnPhone += apps.appValue;
+        }
+        return sumAppsOnPhone;
+    }
+
+
+    //Instalacja aplikacji
+    public void installAnnApp(Human owner, Application appName) {
+        if (phoneApps.contains(appName)) {
+            System.out.println("Aplikacja już jest zainstalowana");
+            return;
+        } else if (owner.getCash() < appName.getAppValue()) {
+            System.out.println("Aplikacja jest za droga");
+            return;
+        } else {
+            System.out.println("Instalacja aplikacji: " + appName.toString() + "Proszę czekać.");
+            this.phoneApps.add(appName);
+            owner.cash = owner.cash - appName.appValue;
+            System.out.println("Instalacja ukończona.");
+        }
+
+    }
+
+
+
+
+
+   /* public void installAnnApp(String appName) {
         System.out.println("Instaluje aplikacje " + this.appName);
     }
 
@@ -60,5 +100,5 @@ public class Phone extends Device {
     }
 
     public void installAnnApp(String[] appNames) {
-    }
+    } */
 }
